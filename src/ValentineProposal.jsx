@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, Sparkles } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import { affirmations } from './constants';
 import AcceptedView from './components/AcceptedView';
 import FloatingDecorations from './components/FloatingDecorations';
@@ -13,7 +13,27 @@ export default function ValentineProposal() {
     const [accepted, setAccepted] = useState(false);
     const [hasClickedNo, setHasClickedNo] = useState(false);
 
+    // 🔴 LOGGING FUNCTION
+    const logClick = async (button) => {
+        try {
+            await fetch('/api/log-click', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    button,
+                    timestamp: new Date().toISOString(),
+                    noClickCount,
+                    hasClickedNo,
+                }),
+            });
+        } catch (err) {
+            console.error('Log failed:', err);
+        }
+    };
+
     const handleYesClick = () => {
+        logClick('YES');
+
         if (!hasClickedNo) {
             setShowYesFirstMessage(true);
             setTimeout(() => setShowYesFirstMessage(false), 3000);
@@ -23,14 +43,15 @@ export default function ValentineProposal() {
     };
 
     const handleNoClick = () => {
+        logClick('NO');
         setHasClickedNo(true);
         setNoClickCount(prev => prev + 1);
     };
 
     const getYesButtonSize = () => {
-        const baseSize = 120;
+        const base = 120;
         const growth = noClickCount * 40;
-        return Math.min(baseSize + growth, 500);
+        return Math.min(base + growth, 500);
     };
 
     const getNoButtonSize = () => {
@@ -40,8 +61,8 @@ export default function ValentineProposal() {
     const getEncouragementMessage = () => {
         if (noClickCount === 1) return "Are you sure? 🥺";
         if (noClickCount === 2) return "Pretty please? 💕";
-        if (noClickCount === 3) return "I know you'll say yes eventually... 😊";
-        if (noClickCount >= 4) return "The 'Yes' button is taking over! 😄";
+        if (noClickCount === 3) return "I know you’ll say yes eventually 😊";
+        if (noClickCount >= 4) return "The Yes button is taking over 😄";
         return "";
     };
 
@@ -70,24 +91,24 @@ export default function ValentineProposal() {
 
                     <div className="button-container">
                         <button
-                            onClick={handleYesClick}
                             className="yes-button"
+                            onClick={handleYesClick}
                             style={{
                                 width: `${getYesButtonSize()}px`,
                                 height: `${getYesButtonSize()}px`,
-                                fontSize: `${Math.min(getYesButtonSize() / 5, 48)}px`
+                                fontSize: `${Math.min(getYesButtonSize() / 5, 48)}px`,
                             }}
                         >
                             Yes! 💚
                         </button>
 
                         <button
-                            onClick={handleNoClick}
                             className="no-button"
+                            onClick={handleNoClick}
                             style={{
                                 width: `${getNoButtonSize()}px`,
                                 height: `${getNoButtonSize()}px`,
-                                fontSize: `${Math.min(getNoButtonSize() / 5, 24)}px`
+                                fontSize: `${Math.min(getNoButtonSize() / 5, 24)}px`,
                             }}
                         >
                             {getNoButtonSize() > 60 ? 'No' : '😢'}
