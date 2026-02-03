@@ -1,0 +1,169 @@
+.valentine-container {
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #fce7f3, #fbcfe8, #fecaca);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-wrapper {
+    max-width: 64rem;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 10;
+}
+
+.main-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 2rem;
+    margin: 0 1rem;
+    border: 4px solid #fbcfe8;
+}
+
+.main-heart {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1.5rem;
+    color: #ef4444;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.main-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #db2777, #ef4444, #db2777);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+    font-family: serif;
+}
+
+.subtitle {
+    font-size: 1.125rem;
+    color: #374151;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    font-style: italic;
+    padding: 0 1rem;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    min-height: 200px;
+}
+
+.yes-button,
+.no-button {
+    font-weight: bold;
+    border-radius: 1rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.yes-button {
+    background: linear-gradient(to right, #4ade80, #10b981);
+    color: white;
+}
+
+.yes-button:hover {
+    background: linear-gradient(to right, #22c55e, #059669);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: scale(1.05);
+}
+
+.no-button {
+    background: linear-gradient(to right, #9ca3af, #6b7280);
+    color: white;
+}
+
+.no-button:hover {
+    background: linear-gradient(to right, #6b7280, #4b5563);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: scale(1.05);
+}
+
+.encouragement-message {
+    margin-top: 2rem;
+    color: #4b5563;
+    font-size: 0.875rem;
+    font-style: italic;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.bottom-message {
+    margin-top: 2rem;
+    color: #4b5563;
+    font-size: 0.875rem;
+    font-style: italic;
+    padding: 0 1rem;
+}
+
+/* Tablet and Desktop styles */
+@media (min-width: 768px) {
+    .main-card {
+        padding: 3rem;
+    }
+
+    .main-heart {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .main-title {
+        font-size: 3.75rem;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+    }
+
+    .button-container {
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .encouragement-message,
+    .bottom-message {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .main-title {
+        font-size: 4.5rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}

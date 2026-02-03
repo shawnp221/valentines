@@ -1,0 +1,75 @@
+.decorations {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+.sparkle {
+    position: absolute;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.sparkle-1 {
+    top: 2.5rem;
+    left: 2.5rem;
+    color: #ec4899;
+    width: 2rem;
+    height: 2rem;
+}
+
+.sparkle-2 {
+    top: 5rem;
+    right: 5rem;
+    color: #ef4444;
+    width: 1.5rem;
+    height: 1.5rem;
+    animation-delay: 0.5s;
+}
+
+.sparkle-3 {
+    bottom: 5rem;
+    left: 5rem;
+    color: #ec4899;
+    width: 1.75rem;
+    height: 1.75rem;
+    animation-delay: 1s;
+}
+
+.sparkle-4 {
+    bottom: 2.5rem;
+    right: 2.5rem;
+    color: #ef4444;
+    width: 2rem;
+    height: 2rem;
+    animation-delay: 1.5s;
+}
+
+.decoration-heart {
+    position: absolute;
+}
+
+.decoration-heart-1 {
+    top: 25%;
+    left: 25%;
+    color: #f9a8d4;
+    width: 3rem;
+    height: 3rem;
+}
+
+.decoration-heart-2 {
+    bottom: 25%;
+    right: 25%;
+    color: #fca5a5;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
