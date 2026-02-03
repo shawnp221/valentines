@@ -28,9 +28,16 @@ valentine-proposal/
 │   │   ├── AffirmationBadges.css  # Affirmation badge styles
 │   │   ├── FirstYesMessage.css    # Popup message styles
 │   │   └── FloatingDecorations.css # Decoration styles
-│   ├── ValentineProposal.jsx      # Main component
+│   ├── App.jsx                    # Main App component
+│   ├── main.jsx                   # React entry point
+│   ├── index.css                  # Global styles
+│   ├── ValentineProposal.jsx      # Main proposal component
 │   └── constants.js               # Affirmations and constants
-└── package.json
+├── index.html                # HTML entry point
+├── vite.config.js            # Vite configuration
+├── package.json              # Dependencies
+├── README.md                 # Documentation
+└── .gitignore               # Git ignore file
 ```
 
 ## Installation
@@ -52,13 +59,29 @@ npm run build
 
 ## Usage
 
-Import the main component in your app:
+The main entry point is `src/main.jsx`, which renders the `App` component:
 
 ```jsx
-import ValentineProposal from './src/ValentineProposal';
+// src/main.jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// src/App.jsx
+import ValentineProposal from './ValentineProposal';
 
 function App() {
-  return <ValentineProposal />;
+  return (
+    <div className="App">
+      <ValentineProposal />
+    </div>
+  );
 }
 ```
 
@@ -70,8 +93,8 @@ Edit the `src/constants.js` file to modify the affirmation messages:
 
 ```javascript
 export const affirmations = [
-  "Your custom message here",
-  // Add more...
+    "Your custom message here",
+    // Add more...
 ];
 ```
 
@@ -81,9 +104,9 @@ In `src/ValentineProposal.jsx`, modify the growth rates:
 
 ```javascript
 const getYesButtonSize = () => {
-  const baseSize = 120;
-  const growth = noClickCount * 40; // Change growth rate here
-  return Math.min(baseSize + growth, 500);
+    const baseSize = 120;
+    const growth = noClickCount * 40; // Change growth rate here
+    return Math.min(baseSize + growth, 500);
 };
 ```
 
