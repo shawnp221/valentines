@@ -82,7 +82,7 @@ export default function ValentineProposal() {
                     <Heart className="main-heart" fill="currentColor" />
 
                     <h1 className="main-title">
-                        Annie, Will You Be My Valentine?
+                        Will You Be My Valentine?
                     </h1>
 
                     <p className="subtitle">
